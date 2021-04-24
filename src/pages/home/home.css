@@ -1,0 +1,28 @@
+.Body{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    width:auto;
+    height:auto;
+    height:90vh;
+}
+
+.InputUrl{
+     font-weight: 450;
+    background-color:ghostwhite;
+    padding:30px;
+    font-size:16px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+}  
+
+.title{
+    font-size:25px;
+    font-weight:600;
+}
+
+.desc{
+    font-size:18px;
+    font-weight:480;
+}

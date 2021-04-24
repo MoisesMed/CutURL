@@ -1,0 +1,11 @@
+.footer{
+    display:flex;
+    align-items:flex-end;
+    justify-content: flex-end;
+    padding: 3px 8px;
+    background-color: #FFF;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    font-size: 14px;
+}
