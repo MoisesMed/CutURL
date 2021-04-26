@@ -8,4 +8,13 @@
     right: 0;
     position: absolute;
     font-size: 14px;
+}@media screen and (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:600px;
+    padding-bottom:120px;
+    display:none;
+  }
 }
