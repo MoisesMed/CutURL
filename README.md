@@ -16,4 +16,5 @@
 <hr>
 
 <h3>O projeto está disponível em : https://cut-six.vercel.app/home </h3>
-
+ 
+<img width="70%" src="https://user-images.githubusercontent.com/43209743/116279307-c131de00-a75d-11eb-83ed-27c8a800d643.png" />
