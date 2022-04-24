@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <span>
-                Developed using <strong> Stackoverflow </strong> and <strong> JavaScript </strong>
+                Developed by <strong> Moisés Medeiros </strong>
             </span>
         </footer>
     )
