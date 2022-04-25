@@ -33,11 +33,11 @@ export default function Home() {
     const [cor, setCor] = React.useState("default")
     const [button, setButton] = React.useState("CLICK HERE!")
     const [value, setValue] = React.useState(null)
-    const [data,setDate] = React.useState({"url":"https://moises-portfolio.vercel.app/"})
+    const [data,setDate] = React.useState({"url":"www.google.com.br"})
   
     const encurtarURL = async () => {
         try {
-            const response = await api.post(``,data);
+            const response = await api.post(`/encurtamentos`,data);
            console.log(response)
         } catch (error) {
             console.log(error)
