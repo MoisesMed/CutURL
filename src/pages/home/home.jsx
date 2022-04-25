@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import './home.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import {api} from "../../api"
+import Copy from "../../assets/copy.svg"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,35 +19,27 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default function Home() {
-    const inputRef = useRef();
-
-    function copy() {
-        if (!inputRef.current) return false;
-
-        inputRef.current.select();
-        document.execCommand("copy");
-        setCor("primary")
-        setButton("COPY!")
-    }
+    function copyToClipboard() {
+        window.prompt("Copy to clipboard: Ctrl+C, Enter", response);
+      }
     const classes = useStyles();
-    const [ivalue, setIvalue] = React.useState("teste")
-    const [cor, setCor] = React.useState("default")
-    const [button, setButton] = React.useState("CLICK HERE!")
-    const [value, setValue] = React.useState(null)
-    const [data,setDate] = React.useState({"url":"www.google.com.br"})
+    const [value, setValue] = useState("")
+    const [response,setResponse] = useState("")
+    const [open,setOpen] = useState(false)
+    const [isLoading,setIsLoading] = useState(false)
   
     const encurtarURL = async () => {
         try {
-            const response = await api.post(`/encurtamentos`,data);
-           console.log(response)
+            setIsLoading(true)
+            const response = await api.post(`/encurtamentos`,{"url":value});
+            setResponse(response.data.urlEncurtada)
+            setOpen(true)
         } catch (error) {
             console.log(error)
+        }finally {
+            setIsLoading(false)
         }
     }
-
-    useEffect(() => {
-        
-    }, []);
 
     return (
         <Container className="Body" maxWidth="md">
@@ -57,18 +50,25 @@ export default function Home() {
                     <input
                         label="URL here"
                         style={{ width: '70%', height: '40px', border: "1px solid gray", borderRadius: 5, paddingLeft: 10 }}
-                        id="fi"
-                        ref={inputRef}
                         type="text"
                         fullWidth
                         onChange={e => setValue(e.target.value)}
                         className={classes.textField}
                         variant="outlined"
+                        disabled={isLoading}
                     />
-                    <Button
-                        onClick={encurtarURL}
-                        color={cor} variant="contained" style={{ width: '30%', height: 'auto' }}>{button}</Button>
+                    <Button disabled={isLoading}
+                        onClick={encurtarURL} variant="contained" style={{ width: '30%', height: 'auto' }}>Click to cut!</Button>
                 </div>
+                
+ {response && <div className="divResponse">
+     <div title="Click to copy !"  onClick={() => navigator.clipboard.writeText(response)} className="divDashed">
+     <img className="imgCopy" src={Copy}/>
+      <span className="response">{response}</span>
+      <img  className="imgCopy"src={Copy}/>
+      </div>
+  </div>}
+           
                 <div>Shortening will help you to decrease the size of your URLs</div>
             </div>
             <h2 className="title" style={{ marginTop: 50 }}>How does the CUT work?</h2>

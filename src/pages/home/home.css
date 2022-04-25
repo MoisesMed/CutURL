@@ -26,3 +26,32 @@
     font-size:18px;
     font-weight:480;
 }
+
+.divResponse{
+    display: flex;
+    justify-content: center;
+}
+
+.divDashed{
+    border: dashed;
+    padding:0 10px;
+    display: flex;
+    align-items: center;
+    border-radius:4px;
+    margin-bottom:16px;
+    margin-top:5px;
+    cursor:pointer;
+}
+.divDashed:hover{
+    transform:scale(1.03)
+}
+
+.imgCopy{
+    width:25px;
+    /* height:50%; */
+}
+
+.response{
+    padding:8px 10px;
+    text-align-last: center;
+}
